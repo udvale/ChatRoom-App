@@ -1,5 +1,3 @@
-package FinalProject;
-
 public class User {
 	private Integer userID;
 	private String userName;

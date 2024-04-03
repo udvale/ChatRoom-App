@@ -1,5 +1,3 @@
-package FinalProject;
-
 public class Player {
 	private Integer userID;
 	private String userName;
