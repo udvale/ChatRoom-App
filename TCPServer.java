@@ -52,7 +52,7 @@ class TCPServer{
                         wordGuessOut.writeUTF("Incorrect guess");
                     }
             }else{
-                    wordGuessOut.writeUTF(guess + " is not valid input");
+                    wordGuessOut.writeUTF("Invalid guess. The letter" + guess + " is not valid input");
             }
     
 

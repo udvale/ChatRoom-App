@@ -1,5 +1,3 @@
-package FinalProject;
-
 import java.io.*;
 import java.net.*;
 class TCPClient {
