@@ -1,44 +1,50 @@
-public class HangmanGame {
+public class Hangman {
    private String givenWord;
-   private StringBuilder currentGuess;
+   private StringBuilder hiddenWord;
    private int attempts;
    
-   public HangmanGame(String word) {
+   public Hangman(String word) {
        this.givenWord = word.toLowerCase();
-       this.currentGuess = new StringBuilder("_".repeat(word.length()));
+       this.hiddenWord = new StringBuilder(word.replaceAll(".", "_"));
        this.attempts = 5; // Set a maximum number of attempts
    }
    
-   public String getCurrentGuess() {
-       return currentGuess.toString();
+   public String getHiddenWord() {
+       return hiddenWord.toString();
    }
    
    public int getAttempts() {
        return attempts;
    }
-   
+
+   public String getWord() {
+    return givenWord;
+}
+
    /**
     * Check how many letters were guessed correctly for the word.
     * @param letter
     * @return  true if the guess was correct, false otherwise
     */
-   public boolean guessLetter(char letter) {
+   public boolean makeGuess(char guess) {
        boolean guessedCorrectly = false;
+       guess = Character.toLowerCase(guess);
        for (int i = 0; i < givenWord.length(); i++) {
-           if (givenWord.charAt(i) == letter) {
-               currentGuess.setCharAt(i, letter);
+           if (givenWord.charAt(i) == guess) {
+               hiddenWord.setCharAt(i, guess);
                guessedCorrectly = true;
            }
        }
        if (!guessedCorrectly) {
           attempts--; // Decrease the number of attempts if the guess was incorrect
+          System.out.println("You have " + getAttempts() + " remaining.");
        }
        return guessedCorrectly;
    }
    
-   public boolean isGameWon() {
-       return currentGuess.indexOf("_") == -1;
-   }
+   public boolean isWordGuessed() {
+    return !hiddenWord.toString().contains("_");
+}
    
    //If the attemps are exhausted then the game is over
    public boolean isGameOver() {
