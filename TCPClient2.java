@@ -3,7 +3,7 @@ import java.net.*;
 public class TCPClient2 {
    public static void main(String[] args) throws Exception, IOException{
       final int port = 6789;
-      final String serverAddress = "192.168.1.183"; //example for now
+      final String serverAddress = "127.0.0.1"; //example for now
       String resp;
       // String modifiedSentence;
       

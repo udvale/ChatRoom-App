@@ -22,11 +22,15 @@ class TCPServer{
     }
 
     private static void  startGame(Socket user1Socket, Socket user2Socket) throws IOException{
+        System.out.println("Both Users have been connected");
+        System.out.println("The game has begun");
         BufferedReader wordIn = new BufferedReader(new InputStreamReader(user1Socket.getInputStream()));
         DataOutputStream wordOut = new DataOutputStream(user1Socket.getOutputStream());
 
         BufferedReader wordGuessIn = new BufferedReader(new InputStreamReader(user2Socket.getInputStream()));
         DataOutputStream wordGuessOut = new DataOutputStream(user2Socket.getOutputStream());
+
+        System.out.println("The word");
 
         wordOut.writeUTF("Please enter the word to guess: ");
         String w = wordIn.readLine().trim().toLowerCase();

@@ -3,7 +3,7 @@ import java.net.*;
 public class TCPClient1 {
    public static void main(String[] args) throws Exception, IOException{
       final int port = 6789;
-      final String serverAddress = "192.168.1.183"; //example for now
+      final String serverAddress = "127.0.0.1"; //example for now
       String resp;
       // String modifiedSentence;
       
@@ -11,16 +11,17 @@ public class TCPClient1 {
       Socket clientSocket = new Socket(serverAddress, port);
       BufferedReader inFromServer =new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
       DataOutputStream outToServer = new DataOutputStream(clientSocket.getOutputStream());
-
-      while ((resp = inFromServer.readLine()) != null){
-         // will handle for hint soon.
-         if (resp.startsWith("Please enter the word")) {
-            String userInputString = inFromUser.readLine().trim().toLowerCase();
-            outToServer.writeUTF(userInputString);
-        } else {
-            System.out.println("Received unexpected response from server: " + resp);
-        }
-      }
-      clientSocket.close();
+         resp = inFromServer.readLine();
+         while (resp != null) {
+            resp = inFromServer.readLine();
+            if (resp.startsWith("Please enter the word")) {
+               System.out.println(resp);
+               String userInputString = inFromUser.readLine().trim().toLowerCase();
+               outToServer.writeUTF(userInputString);
+               break;
+            } else {
+               System.out.println("Received unexpected response from server: " + resp);
+            }
+         }
    }
 }
