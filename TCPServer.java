@@ -30,7 +30,7 @@ class TCPHangmanServer{
 	    char[] wordList = new char[charCount];
 	    
 	    for(int i=0; i<charCount; i++) {
-	    	wordList[i] = '_';
+	    	wordList[i] = '-';
 	    }
 	    String word = new String(wordList);
         while(!found) {
@@ -44,17 +44,18 @@ class TCPHangmanServer{
     	    int occurNum = Integer.parseInt(number);
     	    
     	    if(occurNum == 0) {
-    	    	
+    	    	System.out.println("Incorrect guess");
     	    }
     	    else { 
     	    	for(int i=1;i<=occurNum;i++) {
     	    		user1Out.writeUTF("What is the index of appearance "+i);
-    	    		String nextLetter = user1In.readLine().trim().toLowerCase();
-    	    		wordList[i] = nextLetter.charAt(0);
+    	    		String nextIndex = user1In.readLine().trim().toLowerCase();
+    	    		int index = Integer.parseInt(nextIndex);
+       	    		wordList[index] = letter.charAt(0);
     	    	}
     	    }
     	    word = new String(wordList);
-    	    if(!word.contains("_")) {
+    	    if(!word.contains("-")) {
     	    	found = true;
     	    }
         }
