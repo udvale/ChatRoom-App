@@ -60,7 +60,7 @@ public class Hangman {
             /**
              * a method call to check if the word entered matches the hidden word
              */
-            hang(guess.toLowerCase());
+            wordCheck(guess.toLowerCase());
         }
         out.println("exit");
         if (win) {
@@ -119,7 +119,7 @@ public class Hangman {
      * @param guess
      * @throws IOException 
      */
-    public void hang(String guess) throws IOException {
+    public void wordCheck(String guess) throws IOException {
         String newasterisk = "";
         if (guess.equals(word)) {
             hiddenWord = word;
