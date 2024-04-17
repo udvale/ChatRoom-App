@@ -1,3 +1,4 @@
+package Test2;
 import java.io.*;
 import java.net.*;
 public class TCPClient1 {
@@ -13,7 +14,6 @@ public class TCPClient1 {
       DataOutputStream outToServer = new DataOutputStream(clientSocket.getOutputStream());
          resp = inFromServer.readLine();
          while (resp != null) {
-            resp = inFromServer.readLine();
             if (resp.startsWith("Please enter the word")) {
                System.out.println(resp);
                String userInputString = inFromUser.readLine().trim().toLowerCase();
@@ -23,5 +23,6 @@ public class TCPClient1 {
                System.out.println("Received unexpected response from server: " + resp);
             }
          }
+         clientSocket.close();
    }
 }

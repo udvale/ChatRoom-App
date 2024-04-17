@@ -1,15 +1,19 @@
+package Test2;
 import java.io.*;
 import java.net.*;
 import java.util.*;
 
+import HangmanGame;
+
 class TCPServer{
     public static final int GAME_PORT = 6789;
     public static final int MAX_HINT = 3; // Maximum number of hints allowed per game
+    public static final int CLIENT  = 2;
     public static void main(String argv[]) throws Exception {
     ServerSocket welcomeSocket = new ServerSocket(GAME_PORT);
     System.out.println("Waiting for incoming connection Request...");
 
-        while(true) {
+        while(CLIENT < 3) {
             Socket user1Socket = welcomeSocket.accept();
             System.out.println("User 1 has connected" + user1Socket.getInetAddress());
             Socket user2Socket = welcomeSocket.accept();
@@ -30,14 +34,15 @@ class TCPServer{
         BufferedReader wordGuessIn = new BufferedReader(new InputStreamReader(user2Socket.getInputStream()));
         DataOutputStream wordGuessOut = new DataOutputStream(user2Socket.getOutputStream());
 
-        System.out.println("The word");
+        wordOut.writeBytes("Please enter the word to guess: ");
 
-        wordOut.writeUTF("Please enter the word to guess: ");
+        // wordOut.writeUTF("Please enter the word to guess: ");
         String w = wordIn.readLine().trim().toLowerCase();
+        System.out.println("The word");
 
         int  hintCount = 0;
         boolean found = false;
-        Hangman hangman = new Hangman(w);
+        HangmanGame hangman = new HangmanGame(w);
         while (!hangman.isGameOver()){
             wordGuessOut.writeUTF("Guess what word this is: "+ hangman.getHiddenWord());
             wordGuessOut.writeUTF("Number of guesses you have left "+ hangman.getAttempts());

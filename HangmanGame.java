@@ -1,9 +1,9 @@
-public class Hangman {
+public class HangmanGame {
    private String givenWord;
    private StringBuilder hiddenWord;
    private int attempts;
    
-   public Hangman(String word) {
+   public HangmanGame(String word) {
        this.givenWord = word.toLowerCase();
        this.hiddenWord = new StringBuilder(word.replaceAll(".", "_"));
        this.attempts = 5; // Set a maximum number of attempts
