@@ -3,7 +3,9 @@ Hangman game with TCP connection with multithreading, allows clients to connect 
 
 ## Installation
 1. Close the repository
-`git clone remote <REMOTE_URL>`
+```rb
+# git clone remote <REMOTE_URL>
+```
 2. Navigate to the project directory
 `cd src`
 3. Compile and run the game
