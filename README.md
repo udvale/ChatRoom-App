@@ -7,8 +7,12 @@ Hangman game with TCP connection with multithreading, allows clients to connect 
 git clone remote <REMOTE_URL>
 ```
 2. Navigate to the project directory
-`cd src`
-3. Compile and run the game
-`javac *.java`
-`java Server.java`
-`java Client.java <IP_ADDRESS>`
+```rb
+cd src
+```
+4. Compile and run the game
+```rb
+javac *.java
+java Server.java
+java Client.java <IP_ADDRESS>
+```
