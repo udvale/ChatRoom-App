@@ -1,8 +1,8 @@
 # Computer Networks Project
-Hangman game with TCP connection with multithreading, allows clients to connect with a server and play hangman game. 
+A text based multiplayer Hangman game utalizing a TCP connection with multithreading. Allows two clients to connect with a server and play hangman together by alternating who is picking the word and who is guessing what the word is. 
 
 ## Installation
-1. Close the repository
+1. Clone the repository
 ```rb
 git clone remote <REMOTE_URL>
 ```
@@ -16,3 +16,5 @@ javac *.java
 java Server.java
 java Client.java <IP_ADDRESS>
 ```
+## About
+This Hangman game supports two clients who will alternate picking and guessing the word. The program facilitates the game by keeping track of the rounds and number of guesses and switches user roles when one of the players has one the round. 
