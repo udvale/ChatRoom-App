@@ -4,13 +4,15 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.Scanner;
+import java.util.Random;
 
 public class Client {
-
     public static void main(String[] args) throws IOException {
-	// write your code here
+        Random rand = new Random();
         String host = args[0];
-        int port = 6789;
+        // int port = rand.nextInt(5000);
+        // int port = 6789;
+        int port = Integer.parseInt(args[1]);          
         
         Socket socket = new Socket(host, port);
         PrintWriter out = new PrintWriter(socket.getOutputStream(), true);

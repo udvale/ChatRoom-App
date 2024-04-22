@@ -131,8 +131,8 @@ public class Game {
     
             // Handle game over
             if (P1Losses == gameLives || P2Losses == gameLives) {
-                p1_out.println(" ");
-                p2_out.println(" ");
+                p1_out.println(">>>");
+                p2_out.println(">>>");
                 String winner = P1Losses == gameLives ? player2Name : player1Name;
                 String loser = P1Losses == gameLives ? player1Name : player2Name;
                 p1_out.println("Game over! " + loser + " you have lost the game.");
