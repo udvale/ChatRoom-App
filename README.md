@@ -20,4 +20,4 @@ java Server.java
 java Client.java <SERVER_IP_ADDRESS>
 ```
 ## About
-This Hangman game supports two clients who will alternate picking and guessing the word. The program facilitates the game by keeping track of the rounds and number of guesses and switches user roles when one of the players has one the round. Note that the server can handle multiple games of Hangman at a time. TO add another game, simply run Client.java in two additional terminals.
+This Hangman game supports two clients who will alternate picking and guessing the word. The program facilitates the game by keeping track of the rounds and number of guesses and switches user roles when one of the players has one the round. Note that the server can handle multiple games of Hangman at a time. To add another game, simply run Client.java in two additional terminals.
