@@ -1,0 +1,10 @@
+username,password
+testName,testPassword
+Alexandria,password
+Lexie,newPassword
+bob,bobsPassword
+Alice,wonderland
+Alice,bad
+Alexandria,bad
+Dorothy,oz
+Joe,LittleWomen

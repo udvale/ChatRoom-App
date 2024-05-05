@@ -1,12 +1,11 @@
-package Test;
+package Hangman;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
-/**
- * The Game class handles the mechanics of the game of Hangman.
- */
+
 public class Game {
     Boolean isRunning = true;
     Socket player1;
@@ -21,15 +20,7 @@ public class Game {
     int gameLives = 2;
     int P1Losses = 0;
     int P2Losses = 0;
-    String currWord;
 
-    /**
-     * Creates the input and output streams that communicate with the two players.
-     * @param player1 The Socket of the first player
-     * @param player2 The Socket of the second player
-     * @param player1Name The name of the first player
-     * @param player2Name The name of the second player
-     */
     public Game (Socket player1, Socket player2, String player1Name, String player2Name){
         this.player1 = player1;
         this.player2 = player2;
@@ -45,7 +36,28 @@ public class Game {
             e.printStackTrace();
         }
     }
-
+    
+//    public void verifyPlayer1(String userName) {
+// 	   try {
+// 		   p1_out.println("PASSWORD");
+// 		   p1_out.flush();
+// 		   String password = p1_in.readLine();
+// 		   System.out.println("userName: "+userName+" passowrd: "+password);
+// 	   } catch (IOException e){
+//            e.printStackTrace();
+//        }
+// 	}
+//    
+//    public void verifyPlayer2(String userName) {
+//    	try {
+//  		   p2_out.println("PASSWORD");
+//  		   p2_out.flush();
+//  		   String password = p2_in.readLine();
+//  		   System.out.println("userName: "+userName+" passowrd: "+password);
+//  	   } catch (IOException e){
+//             e.printStackTrace();
+//         }
+//  	}
     public void run() {
         int lives = 6;
         int totalRounds = 3;
@@ -54,8 +66,11 @@ public class Game {
         int nextGuessIndex = 1;
         guesses[0] = ' '; // Initialize the guesses array with spaces so spaces automatically show up.
     
-        p1_out.println("Welcome to Hangman, " + player1Name + "! You are Player 1!");
-        p2_out.println("Welcome to Hangman, " + player2Name + "! You are Player 2!");
+//        verifyPlayer1(player1Name);
+//        verifyPlayer2(player2Name);
+        
+        p1_out.println("Welcome to Hangman, " + player1Name + "! You are Player 1! \nYou are playing with " +player2Name);
+        p2_out.println("Welcome to Hangman, " + player2Name + "! You are Player 2! \nYou are playing with "+player1Name);
     
         while (P1Losses != gameLives && P2Losses != gameLives && round <= totalRounds) {
             p1_out.println(" ");
@@ -74,15 +89,8 @@ public class Game {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            
-            char[] wordList = new char[secretPhrase.length()];//new
-            for(int i=0; i<secretPhrase.length(); i++) {
-		    	wordList[i] = '-';
-		    }
-		   
-            String word = new String(wordList);
+    
             p2_out.println("You can start guessing now.");
-            p2_out.println(word);
             p2_out.println(display(guesses));
             p2_out.flush();
     
@@ -110,19 +118,9 @@ public class Game {
     
                     if (secretPhrase.contains(String.valueOf(guess))) {
                         p2_out.println(">> The letter " + guess + " is in the hidden phrase.");
-                        p2_out.println(">> You have guessed " + guess + " is in the hidden phrase.");
-                        // p2_out.println(display(guesses));
-                        for(int i=0; i<secretPhrase.length(); i++) {
-                        	char letter = secretPhrase.charAt(i);
-                        	if ( letter == guess) {
-                        		wordList[i] = guess;
-                        	}
-                        }
-                        word = new String(wordList);
-
-                        p2_out.println("The word is: "+word);
+                        p2_out.println(display(guesses));
                         p1_out.println("Your opponent guessed the right letter: " + guess);
-                        // p1_out.println(display(guesses));
+                        p1_out.println(display(guesses));
                     } else {
                         p2_out.println(">> The letter " + guess + " is not in the hidden phrase.");
                         p1_out.println("Your opponent guessed the wrong letter: " + guess);
@@ -159,8 +157,8 @@ public class Game {
     
             // Handle game over
             if (P1Losses == gameLives || P2Losses == gameLives) {
-                p1_out.println(" ");
-                p2_out.println(" ");
+                p1_out.println(">>>");
+                p2_out.println(">>>");
                 String winner = P1Losses == gameLives ? player2Name : player1Name;
                 String loser = P1Losses == gameLives ? player1Name : player2Name;
                 p1_out.println("Game over! " + loser + " you have lost the game.");
@@ -183,7 +181,7 @@ public class Game {
         for(char c : secretPhraseHidden){
             //if the character isn't in the guesses list, convert it to an underline.  otherwise, leave it as is.
             if (!(new String(guesses).contains(String.valueOf(c)))){
-                secretPhraseHidden[i] = '_';
+                secretPhraseHidden[i] = '-';
             }
             i++;
         }
@@ -249,13 +247,6 @@ public class Game {
                 "      |";
         return hangmen[lives];
     }
-    /**
-     * switchPlayers switches which player is player 1 and which player is player 2 so that 
-     * the two players can take turns picking the word and guessing
-     * 
-     * @param player1 the Socket for the current player1
-     * @param player2 the Socket for the current player2
-     */
     public void switchPlayers(Socket player1, Socket player2) {
         int temp = P1Losses;
         P1Losses = P2Losses;
