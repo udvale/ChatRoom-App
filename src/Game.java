@@ -330,7 +330,6 @@ public class Game {
 
   /**
      * Plays the sound file.
-     *
      * @param soundFile The path to the sound file.
      */
     private void playSound(String soundFile) throws Exception {
