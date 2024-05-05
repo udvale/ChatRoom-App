@@ -1,3 +1,5 @@
+package Hangman;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.IOException;
@@ -5,11 +7,11 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 
-import javax.sound.sampled.AudioFormat;
-import javax.sound.sampled.AudioInputStream;
-import javax.sound.sampled.AudioSystem;
-import javax.sound.sampled.Clip;
-import javax.sound.sampled.DataLine;
+//import javax.sound.sampled.AudioFormat;
+//import javax.sound.sampled.AudioInputStream;
+//import javax.sound.sampled.AudioSystem;
+//import javax.sound.sampled.Clip;
+//import javax.sound.sampled.DataLine;
 
 /**
  * Main Game logic for  the client-server model Hangman game.
@@ -54,8 +56,8 @@ public class Game {
         int nextGuessIndex = 1;
         guesses[0] = ' '; // Initialize the guesses array with spaces so spaces automatically show up.
     
-        p1_out.println("Welcome to Hangman, " + player1Name + "! You are Player 1!");
-        p2_out.println("Welcome to Hangman, " + player2Name + "! You are Player 2!");
+        p1_out.println("Welcome to Hangman, " + player1Name + "! You are Player 1! \nYou are playing with " +player2Name);
+        p2_out.println("Welcome to Hangman, " + player2Name + "! You are Player 2! \nYou are playing with "+player1Name);
     
         while (P1Losses != gameLives && P2Losses != gameLives && round <= totalRounds) {
             boolean hintGiven = false;
@@ -175,8 +177,8 @@ public class Game {
                 p2_out.println(">>>");
                 String winner = P1Losses == gameLives ? player2Name : player1Name;
                 String loser = P1Losses == gameLives ? player1Name : player2Name;
-                playWinnerSound(winner);
-                playLoserSound(loser);
+//                playWinnerSound(winner);
+//                playLoserSound(loser);
                 p1_out.println("Game over! " + loser + " you have lost the game.");
                 p2_out.println("Congratulations " + winner + "! You have won the game!");
             } else {
@@ -202,7 +204,7 @@ public class Game {
         for(char c : secretPhraseHidden){
             //if the character isn't in the guesses list, convert it to an underline.  otherwise, leave it as is.
             if (!(new String(guesses).contains(String.valueOf(c)))){
-                secretPhraseHidden[i] = '_';
+                secretPhraseHidden[i] = '-';
             }
             i++;
         }
@@ -301,45 +303,45 @@ public class Game {
     }
 
     /**
-     * Plays applause sound for the winner.
-     *
-     * @param winner The name of the winner.
-     */
-    public void playWinnerSound(String winner) {
-        try {
-            String soundFile = "sounds/applause.wav";
-            playSound(soundFile);
-        } catch (Exception e) {
-            System.err.println(e);
-        }
-    }
+//     * Plays applause sound for the winner.
+//     *
+//     * @param winner The name of the winner.
+//     */
+//    public void playWinnerSound(String winner) {
+//        try {
+//            String soundFile = "sounds/applause.wav";
+//            playSound(soundFile);
+//        } catch (Exception e) {
+//            System.err.println(e);
+//        }
+//    }
 
-    /**
-     * Plays boo sound for the loser ( the person who lost :) ).
-     *
-     * @param loser The name of the loser.
-     */
-    public void playLoserSound(String loser) {
-        try {
-            String soundFile = "sounds/boo.wav";
-            playSound(soundFile);
-        } catch (Exception e) {
-            System.err.println(e);
-        }
-    }
+//    /**
+//     * Plays boo sound for the loser ( the person who lost :) ).
+//     *
+//     * @param loser The name of the loser.
+//     */
+//    public void playLoserSound(String loser) {
+//        try {
+//            String soundFile = "sounds/boo.wav";
+//            playSound(soundFile);
+//        } catch (Exception e) {
+//            System.err.println(e);
+//        }
+//    }
 
-  /**
-     * Plays the sound file.
-     *
-     * @param soundFile The path to the sound file.
-     */
-    private void playSound(String soundFile) throws Exception {
-        File file = new File(soundFile);
-        AudioInputStream stream = AudioSystem.getAudioInputStream(file);
-        AudioFormat format = stream.getFormat();
-        DataLine.Info info = new DataLine.Info(Clip.class, format);
-        Clip clip = (Clip) AudioSystem.getLine(info);
-        clip.open(stream);
-        clip.start();
-    }
+//  /**
+//     * Plays the sound file.
+//     *
+//     * @param soundFile The path to the sound file.
+//     */
+//    private void playSound(String soundFile) throws Exception {
+//        File file = new File(soundFile);
+//        AudioInputStream stream = AudioSystem.getAudioInputStream(file);
+//        AudioFormat format = stream.getFormat();
+//        DataLine.Info info = new DataLine.Info(Clip.class, format);
+//        Clip clip = (Clip) AudioSystem.getLine(info);
+//        clip.open(stream);
+//        clip.start();
+//    }
 }

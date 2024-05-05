@@ -1,3 +1,5 @@
+package Hangman;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -14,9 +16,7 @@ public class Client {
     public static void main(String[] args) throws IOException {
         Random rand = new Random();
         String host = args[0];
-        // int port = rand.nextInt(5000);
-        // int port = 6789;
-        int port = Integer.parseInt(args[1]);          
+        int port = 6789;       
         
         Socket socket = new Socket(host, port);
         PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
@@ -24,13 +24,6 @@ public class Client {
         Scanner scanner = new Scanner(System.in);
         String line = "";
         String input = "";
-
-        System.out.print("Enter your name: ");
-        String playerName = scanner.nextLine();
-
-        // Send the player's name to the server
-        out.println(playerName);
-        out.flush();
 
         while(!input.equalsIgnoreCase("quit")){
             line = in.readLine();
@@ -42,7 +35,7 @@ public class Client {
                 out.println(input);
                 out.flush();
                 System.out.println("The hidden phrase is: " + input);
-                System.out.println("Waiting for your opponent to guess.");
+                // System.out.println("Waiting for your opponent to guess.");
             } else if (line.trim().equals("GUESS")) {
                     System.out.print("Guess a letter: ");
                     input = scanner.nextLine();
@@ -53,12 +46,27 @@ public class Client {
                     input = scanner.nextLine();
                     out.println(input);
                     out.flush();
-            } else if (line.trim().startsWith("HINT")) {
+            }else if (line.trim().startsWith("HINT")) {
                 System.out.println("The other player has requested a hint. What's the hint? " );
                 input = scanner.nextLine();
                 out.println(input);
                 out.flush();
-            } else if (line.trim().equals("ENDGAME")) {
+            } else if (line.trim().equals("USERNAME")) {
+                System.out.print("Enter your username ");
+                input = scanner.nextLine();
+                out.println(input);
+                out.flush();
+            } else if (line.trim().equals("PASSWORD")) {
+                System.out.print("Enter your password: ");
+                input = scanner.nextLine();
+                out.println(input);
+                out.flush();
+            }else if (line.trim().equals("SIGNIN")) {
+                System.out.print("Do you have an account? (yes/no)");
+                input = scanner.nextLine();
+                out.println(input);
+                out.flush();
+            }else if (line.trim().equals("ENDGAME")) {
                     System.exit(0);
             } else {
                     System.out.println(line);
