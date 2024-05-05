@@ -1,4 +1,17 @@
 username,password
 testName,testPassword
 Alexandria,password
+<<<<<<< HEAD
 player2,player2
+=======
+Lexie,newPassword
+bob,bobsPassword
+Alice,wonderland
+Alice,bad
+Alexandria,bad
+Dorothy,oz
+Joe,LittleWomen
+Lucy,narnia
+Percy,olympus
+Ashlyn,chemistry
+>>>>>>> 31e5faa1ce719d742a02720006ce260ab877e46c

@@ -1,3 +1,5 @@
+package Hangman;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -14,7 +16,11 @@ public class Client {
     public static void main(String[] args) throws IOException {
         Random rand = new Random();
         String host = args[0];
+<<<<<<< HEAD
         int port = Integer.parseInt(args[1]);      
+=======
+        int port = 6789;       
+>>>>>>> 31e5faa1ce719d742a02720006ce260ab877e46c
         
         Socket socket = new Socket(host, port);
         PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
@@ -23,6 +29,7 @@ public class Client {
         String line = "";
         String input = "";
 
+<<<<<<< HEAD
         // System.out.print("Enter your name: ");
         // String playerName = scanner.nextLine();
 
@@ -30,6 +37,8 @@ public class Client {
         // out.println(playerName);
         // out.flush();
 
+=======
+>>>>>>> 31e5faa1ce719d742a02720006ce260ab877e46c
         while(!input.equalsIgnoreCase("quit")){
             line = in.readLine();
             //print response from client
@@ -58,7 +67,11 @@ public class Client {
                 out.println(input);
                 out.flush();
             } else if (line.trim().equals("USERNAME")) {
+<<<<<<< HEAD
                 System.out.print("Enter your username: ");
+=======
+                System.out.print("Enter your username ");
+>>>>>>> 31e5faa1ce719d742a02720006ce260ab877e46c
                 input = scanner.nextLine();
                 out.println(input);
                 out.flush();

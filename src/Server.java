@@ -1,12 +1,19 @@
+package Hangman;
+
 import java.io.*;
 import java.net.*;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
+<<<<<<< HEAD
+=======
+
+>>>>>>> 31e5faa1ce719d742a02720006ce260ab877e46c
 
 /**
  * The Server class manages connections between clients, handling communication and game sessions.
  * It listens for incoming connections on a specified port and creates game sessions for pairs of clients.
+ * It also prompts the users to sign in before they can play. Accounts are stored in a the accounts.txt file.
  */
 public class Server {
     private static final int PORT = 6789;
@@ -19,6 +26,7 @@ public class Server {
             System.out.println("Waiting for clients to connect");
 
             while (true) {//waiting for clients to connect
+<<<<<<< HEAD
                 // Socket client1 = serverSocket.accept();//the first client to connect is assigned as client1
                 // String player1Name = verifyPlayer(client1);
                 // System.out.println("Player 1 has connected with the username: " + player1Name);
@@ -52,6 +60,18 @@ public class Server {
                 // Wait for both threads to complete
                 thread1.join();
                 thread2.join();
+=======
+                Socket client1 = serverSocket.accept();//the first client to connect is assigned as client1
+                String player1Name = verifyPlayer(client1);
+                System.out.println("Player 1 has connected with the name: " + player1Name);
+
+                Socket client2 = serverSocket.accept();//the second client to connect is assigned as client2
+                String player2Name = verifyPlayer(client2);
+                System.out.println("Player 2 has connected with the name: " + player2Name);
+
+                playerNames.put(client1, player1Name);
+                playerNames.put(client2, player2Name);
+>>>>>>> 31e5faa1ce719d742a02720006ce260ab877e46c
                 
                 //creates a thread to handle the clients
                 ClientHandler clientHandler = new ClientHandler(client1, client2, player1Name, player2Name);
@@ -65,6 +85,10 @@ public class Server {
         }
     }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 31e5faa1ce719d742a02720006ce260ab877e46c
     /**
      * Called by verifyPlayer when a client needs to create a new account.
      * New account information is stored in the accounts.txt file.
@@ -151,6 +175,12 @@ public class Server {
    	        	returnName = userName;
    	        	verified = true;
    	        }
+<<<<<<< HEAD
+=======
+   	       
+   	        	
+   	        
+>>>>>>> 31e5faa1ce719d742a02720006ce260ab877e46c
    	      }
    	      reader.close();
    	      if(!verified) {
@@ -168,7 +198,11 @@ public class Server {
      * This method let lets a player either log in to an existing account 
      * or create a new account
      * @param player
+<<<<<<< HEAD
      * @return 
+=======
+     * @return
+>>>>>>> 31e5faa1ce719d742a02720006ce260ab877e46c
      */
     public static String verifyPlayer(Socket player) {
     	String username = "Login failed";
@@ -192,6 +226,18 @@ public class Server {
     	} catch (IOException e){
             e.printStackTrace();
         }
+<<<<<<< HEAD
  	   return username;
   	}
+=======
+    	
+    	
+ 	   return username;
+    	
+  	}
+     
+    
+    
+    
+>>>>>>> 31e5faa1ce719d742a02720006ce260ab877e46c
 }
