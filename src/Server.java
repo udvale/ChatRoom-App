@@ -3,6 +3,10 @@ import java.net.*;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * The Server class manages connections between clients, handling communication and game sessions.
+ * It listens for incoming connections on a specified port and creates game sessions for pairs of clients.
+ */
 public class Server {
     private static final int PORT = 6789;
     private static final Map<Socket, String> playerNames = new HashMap<>();

@@ -6,6 +6,10 @@ import java.net.Socket;
 import java.util.Scanner;
 import java.util.Random;
 
+/**
+ * The Client class represents a client for the Hangman game. It connects to the server, 
+ * sends and receives messages, and interacts with the user to play the game.
+ */
 public class Client {
     public static void main(String[] args) throws IOException {
         Random rand = new Random();
@@ -38,7 +42,7 @@ public class Client {
                 out.println(input);
                 out.flush();
                 System.out.println("The hidden phrase is: " + input);
-                // System.out.println("Waiting for your opponent to guess.");
+                System.out.println("Waiting for your opponent to guess.");
             } else if (line.trim().equals("GUESS")) {
                     System.out.print("Guess a letter: ");
                     input = scanner.nextLine();
@@ -49,6 +53,11 @@ public class Client {
                     input = scanner.nextLine();
                     out.println(input);
                     out.flush();
+            } else if (line.trim().startsWith("HINT")) {
+                System.out.println("The other player has requested a hint. What's the hint? " );
+                input = scanner.nextLine();
+                out.println(input);
+                out.flush();
             } else if (line.trim().equals("ENDGAME")) {
                     System.exit(0);
             } else {
