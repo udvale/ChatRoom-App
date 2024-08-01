@@ -6,19 +6,19 @@ This Hangman game supports two clients who will alternate picking and guessing t
 
 ## Installation
 1. Clone the repository
-```rb
-git clone remote <REMOTE_URL>
+```sh
+git clone https://github.com/udvale/Hangman-Game.git
 ```
 2. Navigate to the project directory
-```rb
+```sh
 cd src
 ```
 4. Compile and run the server
-```rb
+```sh
 javac *.java
 java Server.java
 ```
 5. Run two Clients in separate terminals
-```rb
+```sh
 java Client.java <SERVER_IP_ADDRESS> <PORT>
 ```
