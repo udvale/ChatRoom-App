@@ -1,24 +1,34 @@
-# Computer Networks Project
-A text based multiplayer Hangman game utilizing a TCP connection with multithreading. Allows two clients to connect with a server and play hangman together by alternating who is picking the word and who is guessing what the word is. 
+# TCP Hangman Game
+TCP Hangman Game is a text-based multiplayer Hangman game that uses TCP connections and multithreading to offer an interactive and engaging experience. This project demonstrates the principles of network programming by allowing two clients to compete in a classic game of Hangman, with the server managing communication and game logic.
 
 ## About
-This Hangman game supports two clients who will alternate picking and guessing the word. The program facilitates the game by keeping track of the rounds and number of guesses and switches user roles when one of the players has one the round. Note that the server can handle multiple games of Hangman at a time. To add another game, simply run Client.java in two additional terminals.
+In the TCP Hangman Game, two players connect to a server and alternate between selecting and guessing words. The server manages multiple concurrent games, ensuring smooth gameplay and role-switching for each round. Key features include:
+- **Multithreading Support**: Multiple games can run concurrently without overlap.
+- **TCP Protocol**: Reliable communication between clients and the server.
+- **Dynamic Gameplay**: Players alternate roles, and rounds are tracked independently.
 
 ## Installation
-1. Clone the repository
+To set up and run the TCP Hangman Game, follow these steps:
+### Prerequisites
+- Ensure JDK 21 and JRE are installed.
+### Setup and Execution
+1. Clone the repository:
 ```sh
 git clone https://github.com/udvale/Hangman-Game.git
 ```
-2. Navigate to the project directory
+2. Navigate to the project directory:
 ```sh
 cd src
 ```
-4. Compile and run the server
+4. Compile and run the server:
 ```sh
 javac *.java
 java Server.java
 ```
-5. Run two Clients in separate terminals
+5. Open Two Terminals to Run Clients: <br>
+In each terminal execute:
 ```sh
 java Client.java <SERVER_IP_ADDRESS> <PORT>
 ```
+## Usage
+This project was developed as part of the Comp352 - Computer Networks course at Dickinson College. It serves as an educational tool to demonstrate the practical application of network programming concepts such as TCP communication, concurrency through multithreading, and the design of distributed systems.
